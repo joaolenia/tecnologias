@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastelada CEPAN - 3º A Devs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <span class="badge-topo" style="background:var(--vermelho); padding:5px 15px; border-radius:20px; font-size:0.7rem; font-weight:900;">FORMATURA 2026</span>
+            <h1>OLHA O <span>PASTEL!</span></h1>
+            <p>3º Ano A - Téc. em Desenvolvimento de Sistemas</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="card-grid">
+            
+            <section class="card">
+                <div class="card-header">
+                    <span class="step-number">1</span>
+                    <h2>Seus Dados</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label>Seu Nome</label>
+                        <input type="text" id="nome" placeholder="Nome Completo" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Forma de Entrega</label>
+                        <select id="tipoEntrega" onchange="toggleEndereco()">
+                            <option value="Retirada">Retirar no Colégio CEPAN</option>
+                            <option value="Entrega">Delivery (Entrega em Casa)</option>
+                        </select>
+                    </div>
+                    <div id="boxEndereco" class="input-group hidden">
+                        <label>Endereço Completo</label>
+                        <input type="text" id="endereco" placeholder="Rua, Número, Bairro">
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <span class="step-number">2</span>
+                    <h2>Escolha os Sabores</h2>
+                </div>
+                <div class="card-body">
+                    <div class="food-item">
+                        <div class="food-info">
+                            <h3>Pastel de Carne</h3>
+                            <p>Sabor clássico da casa</p>
+                        </div>
+                        <div class="counter">
+                            <button type="button" onclick="changeQty('qtdCarne', -1)">-</button>
+                            <input type="number" id="qtdCarne" value="0" min="0" readonly>
+                            <button type="button" onclick="changeQty('qtdCarne', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="food-item">
+                        <div class="food-info">
+                            <h3>Pastel de Banana</h3>
+                            <p>Doce com toque de canela</p>
+                        </div>
+                        <div class="counter">
+                            <button type="button" onclick="changeQty('qtdBanana', -1)">-</button>
+                            <input type="number" id="qtdBanana" value="0" min="0" readonly>
+                            <button type="button" onclick="changeQty('qtdBanana', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> 
+        <section class="checkout-area">
+            
+            <button type="button" class="btn-dica" onclick="toggleTabela()">
+                💡 Clique aqui para ver uma dica de economia!
+            </button>
+
+            <div id="tabelaPrecos" class="tabela-precos hidden">
+                <h4 style="margin:0 0 15px 0">Tabela de Descontos Progressivos</h4>
+                <ul style="list-style:none; padding:0; margin:0; font-size:0.9rem">
+                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee">Abaixo de 12: <span>R$ 5,00/un</span></li>
+                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee; font-weight:bold; color:var(--vermelho)">Exatamente 12 (1 Dúzia): <span>R$ 30,00</span></li>
+                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee">Entre 13 e 23: <span>R$ 30,00 + R$ 5,00/ext</span></li>
+                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee; font-weight:bold; color:var(--vermelho)">Exatamente 24 (2 Dúzias): <span>R$ 50,00</span></li>
+                    <li style="display:flex; justify-content:space-between; padding:5px 0">Acima de 24: <span>R$ 50,00 + R$ 5,00/ext</span></li>
+                </ul>
+            </div>
+            
+            <div class="summary-box">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px">
+                    <span>Quantidade Total:</span>
+                    <span id="resumoQtd" style="font-weight:bold">0</span>
+                </div>
+                <div class="summary-line total">
+                    <span>Valor Total:</span>
+                    <span id="resumoPreco">R$ 0,00</span>
+                </div>
+                
+                <button class="btn-whatsapp" onclick="enviarPedido()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="22">
+                    ENVIAR PEDIDO AGORA
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer-social">
+            <p>Siga nossa turma no Instagram:</p>
+            <a href="https://instagram.com/3a_cepan_" target="_blank" class="btn-insta">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Insta" width="22">
+                @3a_cepan_
+            </a>
+            <div style="margin-top:30px; font-size:0.75rem; color:#888; text-transform:uppercase; letter-spacing:1px">
+                Desenvolvido pelo 3º A - Desenvolvimento de Sistemas <br>
+                Colégio CEPAN 2026
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        function toggleTabela() {
+            const tab = document.getElementById('tabelaPrecos');
+            tab.classList.toggle('hidden');
+        }
+
+        function changeQty(id, delta) {
+            const input = document.getElementById(id);
+            let current = parseInt(input.value);
+            input.value = Math.max(0, current + delta);
+            atualizar();
+        }
+
+        function toggleEndereco() {
+            const isEntrega = document.getElementById('tipoEntrega').value === 'Entrega';
+            document.getElementById('boxEndereco').classList.toggle('hidden', !isEntrega);
+        }
+
+        function calcular(total) {
+            if (total >= 24) return 50 + (total - 24) * 5;
+            if (total >= 12) return 30 + (total - 12) * 5;
+            return total * 5;
+        }
+
+        function atualizar() {
+            const carne = parseInt(document.getElementById('qtdCarne').value) || 0;
+            const banana = parseInt(document.getElementById('qtdBanana').value) || 0;
+            const total = carne + banana;
+            const preco = calcular(total);
+            document.getElementById('resumoQtd').innerText = total;
+            document.getElementById('resumoPreco').innerText = `R$ ${preco.toFixed(2).replace('.', ',')}`;
+        }
+
+        function enviarPedido() {
+            const nome = document.getElementById('nome').value;
+            const c = document.getElementById('qtdCarne').value;
+            const b = document.getElementById('qtdBanana').value;
+            const ent = document.getElementById('tipoEntrega').value;
+            const end = document.getElementById('endereco').value;
+            const total = parseInt(c) + parseInt(b);
+            const valor = calcular(total);
+
+            if (!nome || total === 0) return alert("Por favor, informe seu nome e escolha os pastéis.");
+            if (ent === 'Entrega' && !end) return alert("Por favor, informe o endereço de entrega.");
+
+            let msg = `*NOVO PEDIDO - PASTELADA 3º A*%0A`;
+            msg += `*Cliente:* ${nome}%0A`;
+            msg += `----------------------------%0A`;
+            if(c > 0) msg += `*Carne:* ${c} un%0A`;
+            if(b > 0) msg += `*Banana:* ${b} un%0A`;
+            msg += `----------------------------%0A`;
+            msg += `*Total:* ${total} un%0A`;
+            msg += `*Valor:* R$ ${valor.toFixed(2).replace('.', ',')}%0A`;
+            msg += `*Forma:* ${ent}${ent==='Entrega' ? ' - ' + end : ''}`;
+
+            window.open(`https://wa.me/5542998259010?text=${msg}`);
+        }
+    </script>
+</body>
+</html>
