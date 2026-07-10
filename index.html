@@ -1,188 +1,271 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastelada CEPAN - 3º A Devs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Tecnologias Ancestrais: Resgatando a Ciência Global</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Cabeçalho Principal -->
     <header class="main-header">
-        <div class="logo-container">
-            <span class="badge-topo" style="background:var(--vermelho); padding:5px 15px; border-radius:20px; font-size:0.7rem; font-weight:900;">FORMATURA 2026</span>
-            <h1>OLHA O <span>PASTEL!</span></h1>
-            <p>3º Ano A - Téc. em Desenvolvimento de Sistemas</p>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Tecnologias <span>Ancestrais</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#africanos">Tecnologias Africanas</a></li>
+                    <li><a href="#outros-povos">Outras Civilizações</a></li>
+                    <li><a href="#impacto">Impacto Antirracista</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        
-        <div class="card-grid">
-            
-            <section class="card">
-                <div class="card-header">
-                    <span class="step-number">1</span>
-                    <h2>Seus Dados</h2>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <label>Seu Nome</label>
-                        <input type="text" id="nome" placeholder="Nome Completo" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Forma de Entrega</label>
-                        <select id="tipoEntrega" onchange="toggleEndereco()">
-                            <option value="Retirada">Retirar no Colégio CEPAN</option>
-                            <option value="Entrega">Delivery (Entrega em Casa)</option>
-                        </select>
-                    </div>
-                    <div id="boxEndereco" class="input-group hidden">
-                        <label>Endereço Completo</label>
-                        <input type="text" id="endereco" placeholder="Rua, Número, Bairro">
-                    </div>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>A Ciência Não Nasceu na Europa</h2>
+            <p>Descubra as inovações tecnológicas extraordinárias da antiguidade, com foco no pioneirismo científico africano muitas vezes apagado pela história eurocêntrica.</p>
+            <a href="#africanos" class="btn-primary">Explorar Tecnologias Africanas</a>
+        </div>
+    </section>
 
-            <section class="card">
-                <div class="card-header">
-                    <span class="step-number">2</span>
-                    <h2>Escolha os Sabores</h2>
-                </div>
-                <div class="card-body">
-                    <div class="food-item">
-                        <div class="food-info">
-                            <h3>Pastel de Carne</h3>
-                            <p>Sabor clássico da casa</p>
-                        </div>
-                        <div class="counter">
-                            <button type="button" onclick="changeQty('qtdCarne', -1)">-</button>
-                            <input type="number" id="qtdCarne" value="0" min="0" readonly>
-                            <button type="button" onclick="changeQty('qtdCarne', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <div class="food-item">
-                        <div class="food-info">
-                            <h3>Pastel de Banana</h3>
-                            <p>Doce com toque de canela</p>
-                        </div>
-                        <div class="counter">
-                            <button type="button" onclick="changeQty('qtdBanana', -1)">-</button>
-                            <input type="number" id="qtdBanana" value="0" min="0" readonly>
-                            <button type="button" onclick="changeQty('qtdBanana', 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div> 
-        <section class="checkout-area">
-            
-            <button type="button" class="btn-dica" onclick="toggleTabela()">
-                💡 Clique aqui para ver uma dica de economia!
-            </button>
-
-            <div id="tabelaPrecos" class="tabela-precos hidden">
-                <h4 style="margin:0 0 15px 0">Tabela de Descontos Progressivos</h4>
-                <ul style="list-style:none; padding:0; margin:0; font-size:0.9rem">
-                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee">Abaixo de 12: <span>R$ 5,00/un</span></li>
-                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee; font-weight:bold; color:var(--vermelho)">Exatamente 12 (1 Dúzia): <span>R$ 30,00</span></li>
-                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee">Entre 13 e 23: <span>R$ 30,00 + R$ 5,00/ext</span></li>
-                    <li style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee; font-weight:bold; color:var(--vermelho)">Exatamente 24 (2 Dúzias): <span>R$ 50,00</span></li>
-                    <li style="display:flex; justify-content:space-between; padding:5px 0">Acima de 24: <span>R$ 50,00 + R$ 5,00/ext</span></li>
-                </ul>
+    <!-- Manifesto Antirracista / Introdução -->
+    <section class="intro-manifesto">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="subtitle">Perspectiva Histórica</span>
+                <h2 class="section-title">Descolonizando a História da Tecnologia</h2>
             </div>
-            
-            <div class="summary-box">
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px">
-                    <span>Quantidade Total:</span>
-                    <span id="resumoQtd" style="font-weight:bold">0</span>
+            <div class="manifesto-grid">
+                <div class="manifesto-text">
+                    <p>Por séculos, a narrativa dominante sobre o desenvolvimento tecnológico e científico mundial tendeu a focar quase que exclusivamente nas contribuições europeias ou greco-romanas. Esse viés eurocêntrico não apenas distorce a realidade histórica, mas atua como um mecanismo de racismo estrutural, apagando a capacidade intelectual, a engenharia avançada e a sofisticação científica dos povos não ocidentais, especialmente os africanos e indígenas.</p>
+                    <p>Este portal nasce como um ato de reparação histórica e prática pedagógica antirracista. Aqui, resgatamos o fato de que a África e outras regiões do Sul Global foram berços da matemática, da metalurgia complexa, da astronomia de precisão, da medicina preventiva e de arquiteturas que desafiam os séculos. Reconhecer essas origens é fundamental para devolver o orgulho ancestral e construir um futuro científico genuinamente plural.</p>
                 </div>
-                <div class="summary-line total">
-                    <span>Valor Total:</span>
-                    <span id="resumoPreco">R$ 0,00</span>
+                <div class="manifesto-card">
+                    <h3>Por que enfatizar a África?</h3>
+                    <ul>
+                        <li><strong>O Berço da Humanidade e da Ciência:</strong> Os registros matemáticos mais antigos do mundo pertencem ao continente africano.</li>
+                        <li><strong>Combate ao Estereótipo:</strong> Desconstrói a falsa imagem da África pré-colonial como um lugar exclusivamente agrário ou desprovido de escrita e tecnologia.</li>
+                        <li><strong>Justiça Epistêmica:</strong> Valoriza intelectuais, arquitetos, astrônomos e metalurgistas africanos que moldaram o mundo moderno.</li>
+                    </ul>
                 </div>
-                
-                <button class="btn-whatsapp" onclick="enviarPedido()">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="22">
-                    ENVIAR PEDIDO AGORA
-                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer class="footer-social">
-            <p>Siga nossa turma no Instagram:</p>
-            <a href="https://instagram.com/3a_cepan_" target="_blank" class="btn-insta">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Insta" width="22">
-                @3a_cepan_
-            </a>
-            <div style="margin-top:30px; font-size:0.75rem; color:#888; text-transform:uppercase; letter-spacing:1px">
-                Desenvolvido pelo 3º A - Desenvolvimento de Sistemas <br>
-                Colégio CEPAN 2026
+    <!-- SEÇÃO PRINCIPAL: CIVILIZAÇÕES AFRICANAS -->
+    <section id="africanos" class="african-tech-section">
+        <div class="container">
+            <div class="section-title-wrapper text-center">
+                <span class="subtitle-light">O Pioneirismo do Continente Mãe</span>
+                <h2 class="section-title-light">Grandes Inovações Tecnológicas Africanas</h2>
+                <div class="title-underline"></div>
             </div>
-        </footer>
 
-    </main>
+            <!-- 1. Kemet (Egito Antigo) -->
+            <article class="tech-article">
+                <div class="article-meta">
+                    <span class="region">África do Norte</span>
+                    <h3>Kemet (O Egito Negro Antigo)</h3>
+                </div>
+                <div class="article-content-grid">
+                    <div class="article-desc">
+                        <p>Muitas vezes embranquecido pelo cinema e pela historiografia colonial, o Egito Antigo — originalmente chamado <strong>Kemet</strong> (A Terra Negra) pelos seus habitantes — era uma civilização profundamente enraizada na matriz cultural e étnica africana. Suas realizações tecnológicas formam a base de pilares da engenharia moderna.</p>
+                        <h4>Inovações de Destaque:</h4>
+                        <ul class="styled-list">
+                            <li><strong>Engenharia Arquitetônica de Precisão:</strong> A Grande Pirâmide de Gizé foi a estrutura mais alta do mundo construída pelo homem por mais de 3.800 anos. Sua precisão de alinhamento com os pontos cardeais possui uma margem de erro inferior a uma fração de grau, exigindo um conhecimento avançado de geometria plana e trigonometria primitiva.</li>
+                            <li><strong>Medicina e Cirurgia Avançadas:</strong> O Papiro de Edwin Smith (c. 1600 a.C.) demonstra que os médicos de Kemet aplicavam o método científico séculos antes dos gregos. O documento detalha exames clínicos, diagnósticos, prognósticos e tratamentos cirúrgicos complexos, incluindo suturas e a identificação do sistema nervoso e do cérebro como coordenador motor.</li>
+                            <li><strong>Sistemas Hidráulicos e Irrigação:</strong> Para domar as cheias do Rio Nilo, engenheiros keméticos desenvolveram diques, canais artificiais de grande extensão e o <em>shadoof</em> (dispositivo de elevação de água), permitindo uma agricultura em larga escala que sustentou o império por milênios.</li>
+                        </ul>
+                    </div>
+                    <div class="article-sidebar">
+                        <div class="highlight-box">
+                            <h5>O Osso de Ishango</h5>
+                            <p>Encontrado na atual República Democrática do Congo e datado de mais de 20.000 anos atrás, o Osso de Ishango é uma das ferramentas matemáticas mais antigas da humanidade, contendo marcações que indicam o entendimento de números primos e contagens calendariais astronômicas.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-    <script>
-        function toggleTabela() {
-            const tab = document.getElementById('tabelaPrecos');
-            tab.classList.toggle('hidden');
-        }
+            <!-- 2. Império de Mali e Timbuktu -->
+            <article class="tech-article">
+                <div class="article-meta">
+                    <span class="region">África Ocidental</span>
+                    <h3>O Império do Mali e a Ciência de Timbuktu</h3>
+                </div>
+                <div class="article-content-grid">
+                    <div class="article-desc">
+                        <p>Durante a Idade Média Europeia, o Império do Mali era um dos maiores, mais ricos e academicamente avançados centros do planeta. Sob o governo de Mansa Musa e seus sucessores, a cidade de Timbuktu tornou-se o epicentro intelectual do mundo islâmico e africano.</p>
+                        <h4>Inovações de Destaque:</h4>
+                        <ul class="styled-list">
+                            <li><strong>A Universidade de Sankoré e os Manuscritos:</strong> A universidade abrigava uma das maiores bibliotecas desde a de Alexandria, com centenas de milhares de manuscritos cobrindo astronomia, matemática, medicina, direito e filosofia. Astrônomos de Timbuktu mapeavam as órbitas dos planetas e calculavam eclipses séculos antes da revolução copernicana na Europa.</li>
+                            <li><strong>Arquitetura de Terra Crua:</strong> A Grande Mesquita de Djenné e a Mesquita de Sankoré representam o ápice da engenharia arquitetônica sudano-saheliana. Utilizando o <em>banco</em> (uma mistura de terra, palha e materiais orgânicos), criaram estruturas massivas com propriedades de regulação térmica natural perfeitas para o clima desértico.</li>
+                            <li><strong>Navegação Transatlântica Precoce:</strong> Registros históricos indicam que o antecessor de Mansa Musa, o imperador Abu Bakr II, financiou duas massivas expedições marítimas com centenas de barcos rumo ao Ocidente através do Oceano Atlântico no início do século XIV, sugerindo contatos pré-colombianos com as Américas.</li>
+                        </ul>
+                    </div>
+                    <div class="article-sidebar">
+                        <div class="highlight-box">
+                            <h5>A Astronomia Dogon</h5>
+                            <p>O povo Dogon, no atual Mali, possuía um conhecimento astronômico oral milenar absurdamente preciso sobre o sistema da estrela Sírio, incluindo a existência de Sírio B (uma anã branca invisível a olho nu), detalhando sua densidade e órbita elíptica muito antes da invenção dos telescópios modernos.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        function changeQty(id, delta) {
-            const input = document.getElementById(id);
-            let current = parseInt(input.value);
-            input.value = Math.max(0, current + delta);
-            atualizar();
-        }
+            <!-- 3. Reino de Axum e Lalibela -->
+            <article class="tech-article">
+                <div class="article-meta">
+                    <span class="region">Chifre da África (Etiópia)</span>
+                    <h3>O Reino de Axum e a Engenharia Etíope</h3>
+                </div>
+                <div class="article-content-grid">
+                    <div class="article-desc">
+                        <p>O Reino de Axum foi uma potência comercial e tecnológica global contemporânea do Império Romano e da Pérsia. Localizado na atual Etiópia e Eritreia, destacou-se pela metalurgia de cunhagem de moedas próprias, comércio internacional e monumentos colossais.</p>
+                        <h4>Inovações de Destaque:</h4>
+                        <ul class="styled-list">
+                            <li><strong>Os Estelas de Axum:</strong> Monólitos gigantescos esculpidos em uma única peça de rocha granítica. O maior deles tinha mais de 33 metros de altura e pesava mais de 500 toneladas. Erguer e transportar essas pedras colossais exigia técnicas sofisticadas de alavancagem, polias e estradas de engenharia civil pesada.</li>
+                            <li><strong>As Igrejas Esculpidas na Rocha de Lalibela:</strong> Construídas séculos mais tarde na mesma região geográfica, estas 11 igrejas medievais não foram erguidas com blocos, mas sim <em>esculpidas diretamente de cima para baixo no leito rochoso vulcânico</em>. Engenheiros escavaram complexos sistemas de drenagem subterrânea, trincheiras e túneis, mantendo a integridade estrutural perfeita que resiste intacta até hoje.</li>
+                            <li><strong>Sistemas Agrícolas em Terraços:</strong> Para cultivar nas montanhas íngremes da Etiópia, os axumitas criaram sistemas de terraceamento avançados associados a canais de irrigação e reservatórios subterrâneos de água para evitar a erosão do solo.</li>
+                        </ul>
+                    </div>
+                    <div class="article-sidebar">
+                        <div class="highlight-box">
+                            <h5>Metalurgia Avançada Haya</h5>
+                            <p>Na região da atual Tanzânia, o povo Haya desenvolveu, há mais de 2.000 anos, fornos de fundição de alta temperatura que utilizavam pré-aquecimento do ar para produzir aço carbono de altíssima qualidade. Esse processo só foi alcançado na Europa no século XIX.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        function toggleEndereco() {
-            const isEntrega = document.getElementById('tipoEntrega').value === 'Entrega';
-            document.getElementById('boxEndereco').classList.toggle('hidden', !isEntrega);
-        }
+            <!-- 4. Grande Zimbábue e Reino do Benim -->
+            <article class="tech-article">
+                <div class="article-meta">
+                    <span class="region">África Meridional / Central</span>
+                    <h3>Grande Zimbábue e as Muralhas do Benim</h3>
+                </div>
+                <div class="article-content-grid">
+                    <div class="article-desc">
+                        <p>Duas demonstrações monumentais de engenharia urbana e metalurgia que desmontam qualquer tese colonialista de inferioridade técnica africana.</p>
+                        <h4>Inovações de Destaque:</h4>
+                        <ul class="styled-list">
+                            <li><strong>A Arquitetura de Pedra Seca (Grande Zimbábue):</strong> Uma metrópole medieval cercada por imensas muralhas de granito que chegam a 11 metros de altura. A sofisticação tecnológica reside no fato de que <em>nenhum tipo de argamassa ou cimento foi utilizado</em> para unir as pedras. Os blocos foram cortados com tamanha precisão e encaixados geometricamente de modo que a própria força da gravidade sustenta as estruturas há séculos.</li>
+                            <li><strong>As Muralhas do Benim:</strong> Considerada uma das maiores obras de engenharia civil da história humana antes da era industrial. Localizadas na atual Nigéria, o complexo de fossos e muralhas estendia-se por mais de 16.000 quilômetros lineares, cobrindo uma área urbana planejada em grades matemáticas e equipada com um sistema público de iluminação pública alimentado por óleo de palma.</li>
+                            <li><strong>Os Bronzes do Benim (Metalurgia de Cera Perdida):</strong> Esculturas e placas metálicas feitas com uma liga de cobre de altíssima pureza usando o método de fundição por cera perdida. O nível de detalhamento estético e precisão metalúrgica chocou os invasores britânicos no século XIX, que não conseguiam conceber que africanos dominavam técnicas metalúrgicas tão superiores às suas.</li>
+                        </ul>
+                    </div>
+                    <div class="article-sidebar">
+                        <div class="highlight-box">
+                            <h5>Urbanismo Fractálico</h5>
+                            <p>Muitas cidades e assentamentos da África Central e Ocidental eram planejados com base em padrões de geometria fractal (estruturas autorreplicantes). Esse design matemático otimizava a distribuição espacial das moradias, rotas de comércio e defesa militar de maneira altamente integrada.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
 
-        function calcular(total) {
-            if (total >= 24) return 50 + (total - 24) * 5;
-            if (total >= 12) return 30 + (total - 12) * 5;
-            return total * 5;
-        }
+    <!-- SEÇÃO COMPLEMENTAR: OUTRAS CIVILIZAÇÕES ANTIGAS -->
+    <section id="outros-povos" class="other-peoples-section">
+        <div class="container">
+            <div class="section-title-wrapper text-center">
+                <span class="subtitle">Visão Global Interconectada</span>
+                <h2 class="section-title">Inovações de Outros Povos Antigos</h2>
+                <div class="title-underline"></div>
+            </div>
 
-        function atualizar() {
-            const carne = parseInt(document.getElementById('qtdCarne').value) || 0;
-            const banana = parseInt(document.getElementById('qtdBanana').value) || 0;
-            const total = carne + banana;
-            const preco = calcular(total);
-            document.getElementById('resumoQtd').innerText = total;
-            document.getElementById('resumoPreco').innerText = `R$ ${preco.toFixed(2).replace('.', ',')}`;
-        }
+            <div class="cards-grid">
+                <!-- Mesopotâmia -->
+                <div class="peoples-card">
+                    <div class="card-header">
+                        <h3>Mesopotâmia</h3>
+                        <span class="tag">Crescente Fértil</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Localizada entre os rios Tigre e Eufrates, a Mesopotâmia (Sumérios, Babilônios e Assírios) foi pioneira em tecnologias urbanas fundamentais para o desenvolvimento das sociedades estatais.</p>
+                        <ul>
+                            <li><strong>Escrita Cuneiforme:</strong> O primeiro sistema de escrita registrado, gravado em tabletes de argila para contabilidade e leis.</li>
+                            <li><strong>O Sistema Sexagesimal:</strong> Base matemática fundada no número 60, que usamos até os dias de hoje para dividir o círculo em 360 graus, a hora em 60 minutos e o minuto em 60 segundos.</li>
+                            <li><strong>A Roda e Veículos com Eixos:</strong> Aplicação tecnológica da roda mecânica para o transporte de cargas e uso militar.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        function enviarPedido() {
-            const nome = document.getElementById('nome').value;
-            const c = document.getElementById('qtdCarne').value;
-            const b = document.getElementById('qtdBanana').value;
-            const ent = document.getElementById('tipoEntrega').value;
-            const end = document.getElementById('endereco').value;
-            const total = parseInt(c) + parseInt(b);
-            const valor = calcular(total);
+                <!-- Civilização Maia e Asteca -->
+                <div class="peoples-card">
+                    <div class="card-header">
+                        <h3>Maias e Astecas</h3>
+                        <span class="tag">América Pré-Colombiana</span>
+                    </div>
+                    <div class="card-body">
+                        <p>As civilizações da Mesoamérica criaram soluções científicas e de engenharia adaptadas a ecossistemas complexos, com uma precisão matemática invejável.</p>
+                        <ul>
+                            <li><strong>O Conceito do Zero:</strong> Desenvolvido de forma independente pelos Maias séculos antes de ser adotado na Europa através dos árabes.</li>
+                            <li><strong>Calendários Astronômicos:</strong> O calendário solar maia tinha uma precisão de dias impressionante, baseada em séculos de observações rigorosas dos ciclos de Vênus e do Sol.</li>
+                            <li><strong>Chinampas (Ilhas Artificiais):</strong> Engenharia agrícola asteca que criava ilhas flutuantes hiperprodutivas em lagos, alimentando milhões de habitantes sem esgotar o solo.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            if (!nome || total === 0) return alert("Por favor, informe seu nome e escolha os pastéis.");
-            if (ent === 'Entrega' && !end) return alert("Por favor, informe o endereço de entrega.");
+                <!-- China Antiga -->
+                <div class="peoples-card">
+                    <div class="card-header">
+                        <h3>China Antiga</h3>
+                        <span class="tag">Ásia Oriental</span>
+                    </div>
+                    <div class="card-body">
+                        <p>A China antiga foi o polo tecnológico mais dinâmico da Eurásia por milênios, gerando inovações que alteraram as rotas comerciais e o poder militar em todo o globo.</p>
+                        <ul>
+                            <li><strong>As Quatro Grandes Inovações:</strong> A bússola magnética, a pólvora, o papel de fibras vegetais e a impressão em blocos móveis mudaram o rumo da história mundial.</li>
+                            <li><strong>Sismógrafo de Zhang Heng:</strong> Um dispositivo mecânico de bronze criado no século II capaz de detectar a direção exata de terremotos ocorridos a centenas de quilômetros de distância.</li>
+                            <li><strong>Sistemas de Fundição de Ferro de Alto Forno:</strong> Dominados pela China mil anos antes da Europa, permitindo ferramentas agrícolas e armas em massa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            let msg = `*NOVO PEDIDO - PASTELADA 3º A*%0A`;
-            msg += `*Cliente:* ${nome}%0A`;
-            msg += `----------------------------%0A`;
-            if(c > 0) msg += `*Carne:* ${c} un%0A`;
-            if(b > 0) msg += `*Banana:* ${b} un%0A`;
-            msg += `----------------------------%0A`;
-            msg += `*Total:* ${total} un%0A`;
-            msg += `*Valor:* R$ ${valor.toFixed(2).replace('.', ',')}%0A`;
-            msg += `*Forma:* ${ent}${ent==='Entrega' ? ' - ' + end : ''}`;
+    <!-- SEÇÃO DE CONCLUSÃO E REFLEXÃO ANTIRRACISTA -->
+    <section id="impacto" class="antiracist-reflection">
+        <div class="container text-center">
+            <div class="reflection-box">
+                <h2>A Educação Antirracista e o Futuro da Ciência</h2>
+                <p>Estudar as tecnologias dos povos antigos, especialmente das civilizações africanas, não é apenas um exercício de curiosidade histórica; é uma ferramenta política e social indispensável para desmantelar o racismo estrutural.</p>
+                <div class="quote-block">
+                    <blockquote>
+                        "A educação é a arma mais poderosa que você pode usar para mudar o mundo, mas para isso ela precisa contar a verdade sobre todas as mentes que construíram a nossa história."
+                    </blockquote>
+                </div>
+                <div class="action-points">
+                    <div class="point">
+                        <h3>Prática em Sala de Aula</h3>
+                        <p>A Lei 10.639/03 no Brasil torna obrigatório o ensino de história e cultura afro-brasileira e africana. Trazer a matemática, a engenharia e a física desses povos para as matérias exatas é cumprir essa lei de forma revolucionária.</p>
+                    </div>
+                    <div class="point">
+                        <h3>Representatividade Científica</h3>
+                        <p>Ao mostrar a jovens negros, indígenas e de minorias étnicas que seus ancestrais foram engenheiros, médicos e astrônomos brilhantes, quebramos o ciclo de sub-representação nas carreiras de Ciência, Tecnologia, Engenharia e Matemática (STEM).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            window.open(`https://wa.me/5542998259010?text=${msg}`);
-        }
-    </script>
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Tecnologias Ancestrais. Criado como recurso didático de História da Ciência e Educação Antirracista.</p>
+            <p class="sub-footer">Desenvolvido com foco em acessibilidade, descolonização do saber e valorização da diversidade cultural humana.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
