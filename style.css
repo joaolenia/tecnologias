@@ -1,147 +1,638 @@
+/* ==========================================================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
-    --vermelho: #E63946;
-    --amarelo: #FFB703;
-    --preto: #1D3557;
-    --cinza-fundo: #f0f2f5;
-    --branco: #FFFFFF;
-    --gradiente: linear-gradient(135deg, #1D3557 0%, #0d1b2a 100%);
+    /* Paleta de Cores Afrocêntrica e Elegante */
+    --color-bg-light: #fdfaf6;
+    --color-bg-dark: #1e130c;
+    --color-bg-medium: #2d1e13;
+    --color-primary: #9e4716;       /* Terracota */
+    --color-primary-light: #c86327;
+    --color-accent: #dca134;        /* Ouro Ancestral */
+    --color-accent-green: #3b533e;  /* Verde Oliva Profundo */
+    --color-text-dark: #2c2520;
+    --color-text-light: #f5eae0;
+    --color-text-muted: #8c7b70;
+    --color-border: #e6ded6;
+    
+    /* Fontes */
+    --font-header: 'Cinzel', serif;
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Lora', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--cinza-fundo);
-    margin: 0;
-    color: var(--preto);
-    line-height: 1.6;
+    font-family: var(--font-body);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    line-height: 1.8;
+    overflow-x: hidden;
 }
-
-.main-header {
-    background: var(--gradiente);
-    color: var(--branco);
-    padding: 60px 20px;
-    text-align: center;
-    border-bottom: 8px solid var(--amarelo);
-}
-
-.main-header h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; margin: 10px 0; }
-.main-header h1 span { color: var(--amarelo); }
 
 .container {
-    max-width: 1000px; 
-    margin: -40px auto 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA REUTILIZÁVEL E TÍTULOS
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.section-title-wrapper {
+    margin-bottom: 40px;
+}
+
+.section-title-wrapper.text-center {
+    text-align: center;
+}
+
+.subtitle {
+    font-family: var(--font-title);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.subtitle-light {
+    font-family: var(--font-title);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--color-bg-dark);
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-title-light {
+    font-size: 2.2rem;
+    color: var(--color-text-light);
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: 15px auto 0 auto;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* Botões */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+
+/* Lista Customizada */
+.styled-list {
+    list-style: none;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.styled-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.styled-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
+
+.styled-list strong {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.main-header {
+    background-color: var(--color-bg-dark);
+    border-bottom: 3px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: table; /* Fallback robusto sem usar flex/grid no nível do body/header global */
+    width: 100%;
+    padding: 20px 0;
+}
+
+.logo {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo h1 {
+    font-size: 1.6rem;
+    color: var(--color-text-light);
+}
+
+.logo h1 span {
+    color: var(--color-accent);
+}
+
+.main-nav {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: inline-block;
+}
+
+.main-nav ul li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 500px;
+    background-color: var(--color-bg-dark);
+    /* Um degradê texturizado evocando cores de terra e pôr do sol ancestral */
+    background-image: linear-gradient(135deg, #1e130c 0%, #4a2810 50%, #2d1e13 100%);
+    color: var(--color-text-light);
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
     padding: 0 20px;
 }
 
-.card-grid {
-    display: flex;
-    flex-direction: column; 
-    gap: 20px;
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: var(--font-header);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    color: var(--color-accent);
 }
 
-@media (min-width: 768px) {
-    .card-grid {
-        flex-direction: row; 
-        align-items: stretch;
-    }
-    
-    .card {
-        flex: 1;
-    }
+.hero-content p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    font-family: var(--font-body);
+    font-style: italic;
+    color: #f1ede6;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-.card {
-    background: var(--branco);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+/* ==========================================================================
+   INTRODUÇÃO / MANIFESTO ANTIRRACISTA
+   ========================================================================== */
+.intro-manifesto {
+    background-color: #fff;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.manifesto-grid {
+    display: table;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.manifesto-text {
+    display: table-cell;
+    width: 60%;
+    padding-right: 40px;
+    vertical-align: top;
+}
+
+.manifesto-card {
+    display: table-cell;
+    width: 40%;
+    background-color: var(--color-bg-light);
+    border-left: 5px solid var(--color-primary);
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    vertical-align: top;
+}
+
+.manifesto-card h3 {
+    font-family: var(--font-title);
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.manifesto-card ul {
+    list-style: none;
+}
+
+.manifesto-card ul li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.manifesto-card ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-green);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   SEÇÃO AFRICANA (CONTEÚDO DENSO E PARALELO)
+   ========================================================================== */
+.african-tech-section {
+    background-color: var(--color-bg-medium);
+    color: var(--color-text-light);
+}
+
+.tech-article {
+    background-color: var(--color-bg-dark);
+    border: 1px solid rgba(220, 161, 52, 0.15);
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.article-meta {
+    border-bottom: 1px solid rgba(245, 234, 224, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.article-meta .region {
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    letter-spacing: 1.5px;
+    display: block;
+}
+
+.article-meta h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.article-content-grid {
+    display: table;
+    width: 100%;
+}
+
+.article-desc {
+    display: table-cell;
+    width: 70%;
+    padding-right: 30px;
+    vertical-align: top;
+}
+
+.article-desc p {
+    color: #e2d7cd;
+}
+
+.article-desc h4 {
+    font-family: var(--font-title);
+    color: var(--color-accent);
+    font-size: 1.15rem;
+    margin: 25px 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-sidebar {
+    display: table-cell;
+    width: 30%;
+    vertical-align: top;
+}
+
+.highlight-box {
+    background-color: rgba(158, 71, 22, 0.15);
+    border: 1px dashed var(--color-accent);
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.highlight-box h5 {
+    font-family: var(--font-title);
+    color: var(--color-accent);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.highlight-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: #f5eae0;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   SEÇÃO OUTROS POVOS (GRID DE CARDS VIA TABLE)
+   ========================================================================== */
+.other-peoples-section {
+    background-color: #f5f0e6;
+}
+
+.cards-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 20px 0; /* Espaçamento entre as colunas da tabela */
+    margin-top: 30px;
+}
+
+.peoples-card {
+    display: table-cell;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    vertical-align: top;
+    border-top: 4px solid var(--color-accent-green);
 }
 
 .card-header {
-    background: #f8f9fa;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eee;
+    padding: 25px 25px 15px 25px;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.step-number {
-    background: var(--vermelho);
-    color: white;
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    font-weight: bold; margin-right: 12px;
+.card-header h3 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--color-bg-dark);
 }
 
-.card-body { padding: 25px; flex-grow: 1; }
-
-.input-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: #555; }
-.input-group input, .input-group select {
-    width: 100%; padding: 14px;
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    font-family: inherit;
+.card-header .tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-.food-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 0; border-bottom: 1px solid #f8f9fa;
+.card-body {
+    padding: 25px;
 }
 
-.counter {
-    display: flex; align-items: center;
-    background: var(--cinza-fundo);
-    border-radius: 50px; padding: 5px;
+.card-body p {
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
 }
 
-.counter button {
-    width: 35px; height: 35px; border-radius: 50%; border: none;
-    background: var(--branco); font-weight: bold; cursor: pointer;
-    transition: 0.2s;
+.card-body ul {
+    list-style: none;
 }
 
-.counter button:hover { background: var(--amarelo); }
-.counter input { width: 45px; border: none; background: transparent; text-align: center; font-weight: 700; font-size: 1.1rem; }
-
-.checkout-area {
-    max-width: 600px;
-    margin: 30px auto;
+.card-body ul li {
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    line-height: 1.5;
 }
 
-.btn-dica {
-    width: 100%; background: #fff8e1; color: #856404; border: 2px dashed var(--amarelo);
-    padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; margin-bottom: 20px;
+.card-body ul li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
 }
 
-.tabela-precos {
-    background: var(--branco); padding: 25px; border-radius: 20px;
-    margin-bottom: 25px; border: 2px solid var(--amarelo);
+/* ==========================================================================
+   REFLEXÃO ANTIRRACISTA FINAL
+   ========================================================================== */
+.antiracist-reflection {
+    background-color: #fff;
+    border-top: 1px solid var(--color-border);
 }
 
-.summary-box {
-    background: var(--preto); color: white; padding: 30px; border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(29, 53, 87, 0.4);
+.reflection-box {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.summary-line.total {
-    border-top: 1px dashed rgba(255,255,255,0.3);
-    padding-top: 20px; margin-top: 20px;
-    font-size: 1.6rem; font-weight: 900; color: var(--amarelo);
+.reflection-box h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 25px;
 }
 
-.btn-whatsapp {
-    width: 100%; background: #25D366; color: white; border: none;
-    padding: 20px; border-radius: 15px; font-weight: 900; font-size: 1.1rem;
-    margin-top: 25px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;
+.quote-block {
+    margin: 35px 0;
+    padding: 20px 40px;
+    border-left: 4px solid var(--color-accent);
+    background-color: var(--color-bg-light);
+    font-style: italic;
 }
 
-.footer-social { text-align: center; padding: 50px 0; background: white; margin-top: 50px; }
-.btn-insta {
-    display: inline-flex; align-items: center; gap: 10px;
-    text-decoration: none; color: var(--preto); font-weight: 700;
-    background: var(--cinza-fundo); padding: 12px 25px; border-radius: 50px;
+.quote-block blockquote {
+    font-size: 1.25rem;
+    color: var(--color-bg-dark);
+    font-weight: 600;
 }
 
-.hidden { display: none; }
+.action-points {
+    display: table;
+    width: 100%;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.point {
+    display: table-cell;
+    width: 50%;
+    padding: 0 20px;
+    vertical-align: top;
+}
+
+.point h3 {
+    font-family: var(--font-title);
+    color: var(--color-accent-green);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.point p {
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.main-footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-muted);
+    text-align: center;
+    border-top: 4px solid var(--color-accent);
+    padding: 40px 0;
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+}
+
+.main-footer p {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--color-text-light);
+}
+
+.main-footer .sub-footer {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE BÁSICA (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header-container,
+    .logo,
+    .main-nav,
+    .manifesto-grid,
+    .manifesto-text,
+    .manifesto-card,
+    .article-content-grid,
+    .article-desc,
+    .article-sidebar,
+    .cards-grid,
+    .peoples-card,
+    .action-points,
+    .point {
+        display: block !important;
+        width: 100% !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    
+    .main-nav {
+        text-align: center;
+        margin-top: 15px;
+    }
+    
+    .main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .manifesto-card {
+        margin-top: 30px;
+    }
+    
+    .article-sidebar {
+        margin-top: 25px;
+    }
+    
+    .peoples-card {
+        margin-bottom: 30px;
+    }
+    
+    .point {
+        margin-bottom: 25px;
+    }
+}
